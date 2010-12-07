@@ -17,3 +17,5 @@ alias gi="gem install"
 alias giv="gem install -v"
 alias gci="git pull --rebase && rake && git push"
 alias tlf="tail -f"
+
+alias h="history | grep"
