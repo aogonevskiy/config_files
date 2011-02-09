@@ -3,7 +3,10 @@
 set nocompatible
 
 " don't allow backspacing over everything in insert mode
-set backspace=
+" FIX - changeed from empty to 2
+set backspace=2
+
+set smartindent
 
 set nobackup
 set nowritebackup
@@ -96,7 +99,7 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
 " Maps autocomplete to tab
-imap <Tab> <C-P>
+" imap <Tab> <C-P>
 
 " Duplicate a selection
 " Visual mode: D
@@ -185,8 +188,8 @@ autocmd User Rails map <Leader>g :Rconfig
 autocmd User Rails map <Leader>sg :RSconfig 
 autocmd User Rails map <Leader>tg :RTconfig 
 
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
+"nnoremap <Left> :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Up> :echoe "Use k"<CR>
+"nnoremap <Down> :echoe "Use j"<CR>
 
