@@ -193,3 +193,10 @@ autocmd User Rails map <Leader>tg :RTconfig
 "nnoremap <Up> :echoe "Use k"<CR>
 "nnoremap <Down> :echoe "Use j"<CR>
 
+" fixing insert intendation
+" <F2> toggles the 'paste' option on/off
+" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
