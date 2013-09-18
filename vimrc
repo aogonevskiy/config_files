@@ -57,7 +57,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -69,10 +69,30 @@ endif " has("autocmd")
   " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
 " endif
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
+" A four-space tab indent width is the prefered coding style for Python (and
+" everything else!), although of course some disagree. This page generally
+" assumes you want 4-space indents.
+set tabstop=4
+
+" This allows you to use the < and > keys from VIM's visual (marking) mode to
+" block indent/unindent regions
+set shiftwidth=4
+
+" Insert spaces instead of <TAB> character when the <TAB> key is pressed. This
+" is also the prefered method of Python coding, since Python is especially
+" sensitive to problems with indenting which can occur when people load files
+" in different editors with different tab settings, and also cutting and
+" pasting between applications (ie email/news for example) can result in
+" problems. It is safer and more portable to use spaces for indenting.
 set expandtab
+
+" People like using real tab character instead of spaces because it makes it
+" easier when pressing BACKSPACE or DELETE, since if the indent is using
+" spaces it will take 4 keystrokes to delete the indent. Using this setting,
+" however, makes VIM see multiple space characters as tabstops, and so <BS>
+" does the right thing and will delete four spaces (assuming 4 is your
+" setting).
+set softtabstop=4
 
 " Always display the status line
 set laststatus=2
@@ -159,35 +179,6 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
 
-" Rails configuration
-autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
-autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-autocmd User Rails map <Leader>p :Rstep 
-autocmd User Rails map <Leader>sp :RSstep 
-autocmd User Rails map <Leader>tp :RTstep 
-autocmd User Rails map <Leader>m :Rmodel 
-autocmd User Rails map <Leader>c :Rcontroller 
-autocmd User Rails map <Leader>v :Rview 
-autocmd User Rails map <Leader>u :Runittest 
-autocmd User Rails map <Leader>f :Rfunctionaltest 
-autocmd User Rails map <Leader>i :Rintegrationtest 
-autocmd User Rails map <Leader>h :Rhelper 
-autocmd User Rails map <Leader>tm :RTmodel 
-autocmd User Rails map <Leader>tc :RTcontroller 
-autocmd User Rails map <Leader>tv :RTview 
-autocmd User Rails map <Leader>tu :RTunittest 
-autocmd User Rails map <Leader>tf :RTfunctionaltest 
-autocmd User Rails map <Leader>ti :RTintegrationtest 
-autocmd User Rails map <Leader>sm :RSmodel 
-autocmd User Rails map <Leader>sc :RScontroller 
-autocmd User Rails map <Leader>sv :RSview 
-autocmd User Rails map <Leader>su :RSunittest 
-autocmd User Rails map <Leader>sf :RSfunctionaltest 
-autocmd User Rails map <Leader>si :RSintegrationtest 
-autocmd User Rails map <Leader>g :Rconfig 
-autocmd User Rails map <Leader>sg :RSconfig 
-autocmd User Rails map <Leader>tg :RTconfig 
-
 "nnoremap <Left> :echoe "Use h"<CR>
 "nnoremap <Right> :echoe "Use l"<CR>
 "nnoremap <Up> :echoe "Use k"<CR>
@@ -200,3 +191,9 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+
+
+
+
+set foldmethod=indent
+set foldlevel=99
